@@ -1,5 +1,6 @@
 import numpy as np
-
+from math import pi
+from scipy.stats import zscore
 ####################################################
 # Problem 1: Data filtering
 ####################################################
@@ -56,11 +57,25 @@ average2 = sum(iris_data[+ speciesNumsLst[0] + speciesNumsLst[1]::, 2])/speciesN
 print ("average petal length for each iris species: ", average0, average1, average2)
 
 
-#question 2:
+#question 2
 #the sepal width for the five data cases with the largest sepal length?
 
-indexLst = np.argsort(iris_data[:, 0], axis=0)[-5:][::-1]               #get the indices of the top 5 largest sepal length
-print ("indexLst: ", indexLst)
-sepalWidthRes = iris_data[indexLst, 1]      
+topSepalLengthindexLst = np.argsort(iris_data[:, 0], axis=0)[-5:][::-1]               #get the indices of the top 5 largest sepal length
+print ("indexLst: ", topSepalLengthindexLst)
+sepalWidthRes = iris_data[topSepalLengthindexLst, 1]      
 print ("sepalWidthRes: ", sepalWidthRes)
+
+#question 3
+#sepal measurements for the three data cases with the largest petal area 
+topPetalArea = np.sort(pi/4*iris_data[:, 2] * iris_data[:, 3])[-3:][::-1]             #get the indices of the top 5 largest sepal length
+print ("topPetalArea: ", topPetalArea)
+
+#question 4
+correCoff = np.corrcoef(iris_data[:,:-1], rowvar= False)
+print ("correCoff: ", correCoff)
+
+#question 5
+# Calculate the Z-normalized data matrix and report the maximum value in each column of the Z-normalized matrix.
+maxZScoreColumns = np.amax(zscore(iris_data[:,:-1], axis=None), axis=0)
+print ("maxZScoreColumns: ", maxZScoreColumns)
 
