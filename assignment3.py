@@ -7,7 +7,7 @@ from scipy.stats import zscore
 housing_data = np.loadtxt("boston.csv",delimiter=',')
         
 ## Add code here ##
-'''
+
 #may not use any for or while loops in your code
 #question 1:
 totalNum = housing_data.size        #get total entry 
@@ -32,7 +32,7 @@ print ("avearge of each column ignoring all Rows with at least One Nan: ", avera
 #question 5
 sumColumns2 = np.nansum(housing_data, axis=0)/(housing_data.shape[0]-nanNumColumns)    
 print ("avearge of each column ignoring Nan values only: ", sumColumns2)
-'''
+
 
 ####################################################
 # Problem 2: Data exploration
